@@ -15,7 +15,7 @@ struct brute_command_parser{
     class string_cast_error : std::runtime_error{
     public:
         string_cast_error(const char* what) : runtime_error(what){}
-        virtual const char* what() const noexcept { return runtime_error::what(); }
+        virtual const char* what() const _NOEXCEPT { return runtime_error::what(); }
     };
 
     /// @brief convert provided string to any (particualrry numeric) type
