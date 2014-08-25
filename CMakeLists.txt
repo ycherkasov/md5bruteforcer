@@ -2,11 +2,17 @@ cmake_minimum_required(VERSION 2.8)
 project(brute CXX)
 set(TARGET brute)
 
-if(UNIX)
+if(LINIX)
 
   message("UNIX congiguration")
   set(CMAKE_CXX_FLAGS "-std=c++11 -pthread")
   set(CMAKE_EXE_LINKER_FLAGS "-std=c++11 -pthread -Wl,--no-as-needed")
+
+elseif("APPLE")
+
+  message("UNIX congiguration")
+  set(CMAKE_CXX_FLAGS "-std=c++11")
+  set(CMAKE_EXE_LINKER_FLAGS "-std=c++11 -pthread -Wl")
 
 elseif("WIN32")
 
