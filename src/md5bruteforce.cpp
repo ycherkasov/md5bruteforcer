@@ -34,7 +34,7 @@ char* ulltoa(long long value, char *s, int radix, const char* chars) {
     /* reverse the string into the caller's string */
     q = (char*)s;
     /*double braces to suppress clang warning*/
-    while ( *q++ = *--p);
+    while (( *q++ = *--p));
 
     return s;
 }
