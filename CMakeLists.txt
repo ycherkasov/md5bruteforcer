@@ -5,14 +5,9 @@ set(TARGET brute)
 if("UNIX")
 
   message("UNIX congiguration")
-  set(CMAKE_CXX_FLAGS "-std=c++11 -pthread")
+  message("WARNING: gcc-multilib is required on x64 systems for the cross-compilation!")
+  set(CMAKE_CXX_FLAGS "-m32 -std=c++11 -pthread")
   set(CMAKE_EXE_LINKER_FLAGS "-std=c++11 -pthread -Wl,--no-as-needed")
-
-elseif("APPLE")
-
-  message("UNIX congiguration")
-  set(CMAKE_CXX_FLAGS "-std=c++11")
-  set(CMAKE_EXE_LINKER_FLAGS "-std=c++11 -pthread -Wl")
 
 elseif("WIN32")
 

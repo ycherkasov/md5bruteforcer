@@ -132,7 +132,7 @@ void md5bruteforcer::guess_loop(size_t word_length, size_t max_threads/* = 0*/) 
 
                 md5 md5;
                 char buf[255] = {};
-                string str(ulltoa(i, buf, alphabet_length, _alphabet.c_str()));
+                string str(ulltoa(i, buf, alphabet_length, chars.c_str()));
 
                 // align to 'zero symbol'
                 string result;
@@ -145,11 +145,12 @@ void md5bruteforcer::guess_loop(size_t word_length, size_t max_threads/* = 0*/) 
                         result += _alphabet[index_of];
                     }
                     else{
-                        throw std::runtime_error("Out of alphabet");
+                        // should not be here. Could not throw exception in separate thread
+                        cerr << "ERROR: Out of alphabet" << endl;
+                        return;
                     }
                 });
-
-
+                
                 std::string new_hash(md5.digest_string(result.c_str()));
 
                 if (compare(new_hash)){
