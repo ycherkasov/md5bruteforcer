@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 project(brute CXX)
 set(TARGET brute)
 
-if(LINIX)
+if("UNIX")
 
   message("UNIX congiguration")
   set(CMAKE_CXX_FLAGS "-std=c++11 -pthread")
