@@ -7,6 +7,11 @@
 #include <sstream>
 #include <stdexcept>
 
+#if defined(_WIN32) || defined(_WIN64)
+#define NOEXCEPT throw()
+#else
+#define NOEXCEPT noexcept
+#endif
 
 /// @brief Utility class with methods used to pase applications params
 struct brute_command_parser{
@@ -15,7 +20,7 @@ struct brute_command_parser{
     class string_cast_error : std::runtime_error{
     public:
         string_cast_error(const char* what) : runtime_error(what){}
-        virtual const char* what() const noexcept { return runtime_error::what(); }
+        virtual const char* what() const NOEXCEPT { return runtime_error::what(); }
     };
 
     /// @brief convert provided string to any (particualrry numeric) type
